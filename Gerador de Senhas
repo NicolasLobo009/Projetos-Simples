@@ -1,0 +1,90 @@
+import random
+import string
+import time
+
+
+def limpar_tela():
+    print("\n" * 50)
+
+
+def cabecalho():
+    print("=" * 40)
+    print(" 🔐 GERADOR DE SENHAS SEGURAS 🔐")
+    print("=" * 40)
+
+
+def gerar_senha(tamanho, usar_maiusculas, usar_numeros, usar_simbolos):
+    caracteres = string.ascii_lowercase
+
+    if usar_maiusculas:
+        caracteres += string.ascii_uppercase
+    if usar_numeros:
+        caracteres += string.digits
+    if usar_simbolos:
+        caracteres += string.punctuation
+
+    if not caracteres:
+        return None
+
+    senha = "".join(random.choice(caracteres) for _ in range(tamanho))
+    return senha
+
+
+def salvar_senha(senha):
+    with open("senhas_geradas.txt", "a", encoding="utf-8") as arquivo:
+        arquivo.write(senha + "\n")
+
+
+def menu():
+    while True:
+        limpar_tela()
+        cabecalho()
+        print("1 - Gerar nova senha")
+        print("2 - Sair")
+        escolha = input("\nEscolha uma opção: ")
+
+        if escolha == "1":
+            try:
+                tamanho = int(input("\nTamanho da senha (mín. 6): "))
+                if tamanho < 6:
+                    print("Senha muito curta!")
+                    time.sleep(2)
+                    continue
+
+                usar_maiusculas = input(
+                    "Usar letras MAIÚSCULAS? (s/n): ").lower() == "s"
+                usar_numeros = input("Usar números? (s/n): ").lower() == "s"
+                usar_simbolos = input("Usar símbolos? (s/n): ").lower() == "s"
+
+                senha = gerar_senha(
+                    tamanho,
+                    usar_maiusculas,
+                    usar_numeros,
+                    usar_simbolos
+                )
+
+                if senha is None:
+                    print("\nErro ao gerar senha.")
+                else:
+                    print(f"\n✅ Senha gerada: {senha}")
+                    salvar = input("Salvar senha em arquivo? (s/n): ").lower()
+                    if salvar == "s":
+                        salvar_senha(senha)
+                        print("💾 Senha salva em 'senhas_geradas.txt'")
+
+            except ValueError:
+                print("\nDigite um número válido!")
+
+            input("\nPressione ENTER para continuar...")
+
+        elif escolha == "2":
+            print("\nSaindo... Até mais! 👋")
+            break
+
+        else:
+            print("\nOpção inválida!")
+            time.sleep(1)
+
+
+menu()
+1
