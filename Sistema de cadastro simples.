@@ -1,0 +1,28 @@
+print('-' * 64)
+print('BEM VINDO AO NOSSO SITE, GOSTARIA DE FAZER SEU CADASTRO CONOSCO?')
+while True:
+    print('1- Sim')
+    print('2- Não')
+    escolha = input('Escolha: ')
+    print('-' * 64)
+    if escolha == '1':
+        print('Boa escolha, vamos começar seu cadastro! Crie um nome de usuário e senha.')
+        usuário = input('Escolha seu nome de usuário: ')
+        senha = input('Crie uma senha: ')
+        print('-'*64)
+        break
+    elif escolha == '2':
+        print('Ok, volte quando quiser!')
+        print('-' * 64)
+        break
+
+if senha and usuário:
+    print('Você se cadastrou com sucesso, gostaria de conferir seus dados? Sim ou Não?')
+    conferir = input('Digite aqui: ')
+    print('-' * 64)
+    if conferir == 'Sim':
+        print( f'Tudo bem então. Aqui estão seus dados:\n Usuário -{usuário}\n Senha - {senha}')
+        print('-' *64)
+    elif conferir == 'Não':
+        print('Tudo certo. Obrigado!')
+        print('-' * 64)
