@@ -1,0 +1,11 @@
+dicio = {'Nome': 'Jorge', 'Idade': '37', 'Cidade': 'Xique-Xique'}
+print(f'''
+---------------------------------------------
+|                Informações                |
+|            Nome: {dicio["Nome"]}          |
+|            Idade: {dicio["Idade"]}        |
+|            Cidade: {dicio["Cidade"]}      |
+---------------------------------------------
+ ''')
+print(
+    f'Oi! Sou o {dicio["Nome"]}, tenho {dicio["Idade"]} anos e moro em {dicio["Cidade"]}. Prazer!!')
