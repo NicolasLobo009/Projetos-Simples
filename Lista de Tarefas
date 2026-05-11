@@ -1,0 +1,40 @@
+lista = ['Arrumar a casa', 'Passear com o cachorro']
+
+# MOSTRAR LISTA
+def mostrar_lista():
+    print('-'*65)
+    print('Lista de Tarefas:', lista)
+
+# ALTERAR LISTA
+def alterar_lista():
+
+    # ESCOLHA
+    print('-'*65)
+    decisão = int(input('''Oque deseja alterar na lista?
+Digite 1 para adicionar uma tarefa na lista.
+Digite 2 para remover uma tarefa da lista.
+Digite aqui: '''))
+
+    # ADICIONAR TAREFA
+    print('-'*65)
+    if decisão == 1:
+        lista.append(input('Que tarefa gostaria de adicionar?\nDigite aqui: '))
+        print('-'*65)
+        print('Lista atualizada:', lista)
+        print('-'*65)
+
+    # REMOVER TAREFA
+    elif decisão == 2:
+        lista.remove(input('Que tarefa gostaria de remover?\nDigite aqui: '))
+        print('-'*65)
+        print('Lista atualizada:', lista)
+        print('-'*65)
+
+    # AÇÃO NÃO LISTADA
+    else:
+        print('-'*65)
+        print('Esta opção não está disponível no sistema. Tente novamente')
+
+while True:
+    mostrar_lista()
+    alterar_lista()
