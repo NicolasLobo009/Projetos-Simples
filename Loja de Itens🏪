@@ -1,0 +1,59 @@
+# LOJA SIMPLES (PRODUTOS, SALDO DO USUÁRIO E COMPRAS)
+
+# LISTA DE PRODUTOS
+lista_de_produtos = {
+    'Chocolate': 15,
+    'Abóbora': 60,
+    'Buquê de Flores': 350,
+    'Celular': 700,
+    'Notebook': 1100
+}
+
+saldo = 2200.00
+
+# MOSTRAR PRODUTOS
+def mostrar_produtos():
+    print('-' * 65)
+    print('PRODUTOS DISPONÍVEIS:\n')
+    for produto, preço in lista_de_produtos.items():
+        print(f'{produto} - R${preço}')
+
+# MOSTRAR SALDO
+def mostrar_saldo():
+    print('-' * 65)
+    print(f'Saldo disponível: R${saldo:.2f}')
+
+# GASTAR SALDO
+def gastar_saldo():
+    global saldo
+    print('-' * 65)
+    gastar = input('O que você gostaria de comprar?\nDigite aqui: ')
+
+    # VERIFICAR SE O PRODUTO EXISTE
+    if gastar in lista_de_produtos:
+        preço = lista_de_produtos[gastar]
+        # VERIFICAR SALDO
+        if saldo >= preço:
+            saldo -= preço
+            print('-' * 65)
+            print(f'Você comprou: {gastar}')
+            print(f'Valor da compra: R${preço}')
+            print(f'Saldo atualizado: R${saldo:.2f}')
+        else:
+            print('-' * 65)
+            print('Você não possui saldo suficiente.')
+    else:
+        print('-' * 65)
+        print('Produto não encontrado.')
+
+# LOOP PRINCIPAL
+while True:
+    mostrar_produtos()
+    mostrar_saldo()
+    gastar_saldo()
+    print('-' * 65)
+    continuar = input('Deseja continuar comprando? (S/N): ').upper()
+    if continuar == 'N':
+        print('-' * 65)
+        print('Sistema encerrado.')
+        break
